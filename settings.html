@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КвестПортал — Настройки</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="theme.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><span>Квест</span>Портал</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html">Квесты</a></li>
+                <li><a href="index.html#concept">О нас</a></li>
+                <li><a href="index.html#faq">Вопросы</a></li>
+                <li><a href="settings.html" class="active">Настройки</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-header btn-login" onclick="openModal('login')">Войти</button>
+            <button class="btn-header btn-register" onclick="openModal('register')">Регистрация</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="settings-page">
+            <h1>Настройки интерфейса</h1>
+            <p>Изменения применяются сразу и сохраняются в браузере.</p>
+
+            <div class="settings-group">
+                <h3>Тема оформления</h3>
+                <div class="option-row" data-setting="theme">
+                    <button class="option-btn" data-value="dark">🌙 Тёмная</button>
+                    <button class="option-btn" data-value="light">☀️ Светлая</button>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>Размер шрифта</h3>
+                <div class="option-row" data-setting="font">
+                    <button class="option-btn" data-value="s">S — мелкий</button>
+                    <button class="option-btn" data-value="m">M — средний</button>
+                    <button class="option-btn" data-value="l">L — крупный</button>
+                </div>
+            </div>
+
+            <div class="settings-group">
+                <h3>Акцентный цвет</h3>
+                <div class="option-row" data-setting="accent">
+                    <button class="option-btn" data-value="red"><span class="color-dot dot-red"></span> Красный</button>
+                    <button class="option-btn" data-value="blue"><span class="color-dot dot-blue"></span> Синий</button>
+                    <button class="option-btn" data-value="purple"><span class="color-dot dot-purple"></span> Фиолетовый</button>
+                </div>
+            </div>
+
+            <div class="settings-actions">
+                <button class="btn-reset-settings" onclick="resetSettings()">↺ Сбросить по умолчанию</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo footer-logo"><span>Квест</span>Портал</div>
+                <p>Агрегатор квест-комнат: бронируйте лучшие сценарии в любое время и на любом устройстве.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Квесты</a></li>
+                    <li><a href="settings.html">Настройки</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li>📧 support@questportal.ru</li>
+                    <li>📞 +7 (800) 123-45-67</li>
+                    <li>📍 г. Ульяновск, ул. Квестовая, д. 1</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 КвестПортал. Все права защищены.</div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="register-form" class="form">
+                <h2>Регистрация</h2>
+                <form onsubmit="handleRegister(event)" novalidate>
+                    <div class="field">
+                        <input type="text" id="reg-name" placeholder="Имя">
+                        <span class="error" id="error-reg-name"></span>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="reg-email" placeholder="Email">
+                        <span class="error" id="error-reg-email"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="reg-password" placeholder="Пароль">
+                        <span class="error" id="error-reg-password"></span>
+                    </div>
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+            <div id="login-form" class="form">
+                <h2>Вход</h2>
+                <form onsubmit="handleLogin(event)" novalidate>
+                    <div class="field">
+                        <input type="email" id="log-email" placeholder="Email">
+                        <span class="error" id="error-log-email"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="log-password" placeholder="Пароль">
+                        <span class="error" id="error-log-password"></span>
+                    </div>
+                    <button type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="saved-toast" id="saved-toast">✓ Настройки сохранены</div>
+
+    <script src="scripts.js"></script>
+    <script src="settings.js"></script>
+</body>
+</html>

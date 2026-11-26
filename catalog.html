@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КвестПортал — Каталог квестов</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="theme.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><span>Квест</span>Портал</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="catalog.html" class="active">Квесты</a></li>
+                <li><a href="index.html#concept">О нас</a></li>
+                <li><a href="index.html#faq">Вопросы</a></li>
+                <li><a href="settings.html">Настройки</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn-header btn-login" onclick="openModal('login')">Войти</button>
+            <button class="btn-header btn-register" onclick="openModal('register')">Регистрация</button>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="catalog-header">
+            <h1>Каталог квестов</h1>
+            <p>Найдите свой квест: поиск по названию, фильтрация по жанру и компании</p>
+        </section>
+
+        <section class="catalog-controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="🔍 Поиск по названию...">
+            </div>
+            <div class="filters">
+                <select id="genre-filter">
+                    <option value="all">Все жанры</option>
+                </select>
+                <select id="company-filter">
+                    <option value="all">Любая компания</option>
+                    <option value="2">2 человека</option>
+                    <option value="4">до 4 человек</option>
+                    <option value="6">до 6 человек</option>
+                    <option value="8">до 8 человек</option>
+                </select>
+                <button id="reset-filters" class="btn-header btn-register">Сбросить</button>
+            </div>
+        </section>
+
+        <p class="results-count" id="results-count"></p>
+
+        <section class="movies-grid" id="quests-grid"></section>
+
+        <div class="no-results" id="no-results" style="display:none;">
+            <div class="no-results-icon">🔐</div>
+            <h3>Ничего не найдено</h3>
+            <p>Попробуйте изменить поисковый запрос или сбросить фильтры</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="logo footer-logo"><span>Квест</span>Портал</div>
+                <p>Агрегатор квест-комнат: бронируйте лучшие сценарии в любое время на любом устройстве.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Квесты</a></li>
+                    <li><a href="index.html#concept">О нас</a></li>
+                    <li><a href="index.html#faq">Вопросы</a></li>
+                    <li><a href="settings.html">Настройки</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Контакты</h4>
+                <ul>
+                    <li>📧 support@questportal.ru</li>
+                    <li>📞 +7 (800) 123-45-67</li>
+                    <li>📍 г. Ульяновск, ул. Квестовая, д. 1</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 КвестПортал. Все права защищены.</div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="register-form" class="form">
+                <h2>Регистрация</h2>
+                <form onsubmit="handleRegister(event)" novalidate>
+                    <div class="field">
+                        <input type="text" id="reg-name" placeholder="Имя">
+                        <span class="error" id="error-reg-name"></span>
+                    </div>
+                    <div class="field">
+                        <input type="email" id="reg-email" placeholder="Email">
+                        <span class="error" id="error-reg-email"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="reg-password" placeholder="Пароль">
+                        <span class="error" id="error-reg-password"></span>
+                    </div>
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+            </div>
+            <div id="login-form" class="form">
+                <h2>Вход</h2>
+                <form onsubmit="handleLogin(event)" novalidate>
+                    <div class="field">
+                        <input type="email" id="log-email" placeholder="Email">
+                        <span class="error" id="error-log-email"></span>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="log-password" placeholder="Пароль">
+                        <span class="error" id="error-log-password"></span>
+                    </div>
+                    <button type="submit">Войти</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="quest-modal" class="modal">
+        <div class="modal-content movie-modal-content">
+            <span class="close" onclick="closeQuestModal()">&times;</span>
+            <div id="quest-details"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    <script src="catalog.js"></script>
+</body>
+</html>
